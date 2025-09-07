@@ -1,42 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* FRA Atlas Design System - Modern GIS Dashboard with Glassmorphism */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Core Background Colors */
+    --background: 220 25% 97%;
+    --foreground: 215 25% 15%;
+    
+    /* Glassmorphism Base */
+    --glass-background: 220 25% 98%;
+    --glass-border: 220 20% 85%;
+    --glass-shadow: 220 15% 35%;
+    
+    /* Primary Brand - Forest Green */
+    --primary: 142 76% 36%;
+    --primary-light: 142 65% 45%;
+    --primary-dark: 142 85% 25%;
+    --primary-foreground: 0 0% 100%;
+    
+    /* Secondary - Sky Blue */
+    --secondary: 200 85% 65%;
+    --secondary-light: 200 75% 75%;
+    --secondary-dark: 200 95% 55%;
+    --secondary-foreground: 215 25% 15%;
+    
+    /* Accent - Sage Green */
+    --accent: 120 25% 75%;
+    --accent-light: 120 20% 85%;
+    --accent-dark: 120 30% 65%;
+    --accent-foreground: 215 25% 15%;
+    
+    /* Status Colors */
+    --status-verified: 142 76% 36%;
+    --status-pending: 45 93% 58%;
+    --status-rejected: 0 84% 65%;
+    --status-draft: 220 15% 65%;
+    
+    /* Gradient Definitions */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-light)));
+    --gradient-secondary: linear-gradient(135deg, hsl(var(--secondary)), hsl(var(--secondary-light)));
+    --gradient-glass: linear-gradient(135deg, hsl(var(--glass-background) / 0.8), hsl(var(--glass-background) / 0.4));
+    --gradient-hero: linear-gradient(135deg, hsl(var(--primary-dark)), hsl(var(--secondary-dark)));
+    
+    /* Interactive States */
+    --hover-overlay: 220 15% 25% / 0.05;
+    --active-overlay: 220 15% 25% / 0.1;
+    
+    /* Shadows */
+    --shadow-glass: 0 8px 32px hsl(var(--glass-shadow) / 0.1);
+    --shadow-card: 0 4px 20px hsl(var(--glass-shadow) / 0.08);
+    --shadow-hover: 0 12px 40px hsl(var(--glass-shadow) / 0.15);
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    /* Shadcn Integration */
+    --card: 220 25% 98%;
+    --card-foreground: 215 25% 15%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: 220 25% 98%;
+    --popover-foreground: 215 25% 15%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --muted: 220 15% 93%;
+    --muted-foreground: 215 15% 45%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 84% 65%;
+    --destructive-foreground: 0 0% 100%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --border: 220 20% 85%;
+    --input: 220 20% 90%;
+    --ring: 142 76% 36%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
-
-    --radius: 0.5rem;
+    --radius: 0.75rem;
 
     --sidebar-background: 0 0% 98%;
 
@@ -100,6 +137,72 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-inter;
+    background: linear-gradient(135deg, hsl(var(--background)), hsl(var(--accent-light) / 0.3));
+    min-height: 100vh;
+  }
+}
+
+@layer components {
+  /* Glassmorphism Card */
+  .glass-card {
+    @apply backdrop-blur-md border rounded-xl;
+    background: var(--gradient-glass);
+    border-color: hsl(var(--glass-border));
+    box-shadow: var(--shadow-glass);
+  }
+  
+  .glass-card:hover {
+    box-shadow: var(--shadow-hover);
+    transform: translateY(-2px);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  /* Status Badges */
+  .status-verified {
+    @apply px-3 py-1 rounded-full text-xs font-medium;
+    background-color: hsl(var(--status-verified) / 0.1);
+    color: hsl(var(--status-verified));
+    border: 1px solid hsl(var(--status-verified) / 0.2);
+  }
+  
+  .status-pending {
+    @apply px-3 py-1 rounded-full text-xs font-medium;
+    background-color: hsl(var(--status-pending) / 0.1);
+    color: hsl(var(--status-pending));
+    border: 1px solid hsl(var(--status-pending) / 0.2);
+  }
+  
+  .status-rejected {
+    @apply px-3 py-1 rounded-full text-xs font-medium;
+    background-color: hsl(var(--status-rejected) / 0.1);
+    color: hsl(var(--status-rejected));
+    border: 1px solid hsl(var(--status-rejected) / 0.2);
+  }
+  
+  .status-draft {
+    @apply px-3 py-1 rounded-full text-xs font-medium;
+    background-color: hsl(var(--status-draft) / 0.1);
+    color: hsl(var(--status-draft));
+    border: 1px solid hsl(var(--status-draft) / 0.2);
+  }
+  
+  /* Custom Scrollbar */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: hsl(var(--muted));
+    border-radius: 3px;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: hsl(var(--muted-foreground) / 0.3);
+    border-radius: 3px;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--muted-foreground) / 0.5);
   }
 }
