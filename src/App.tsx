@@ -9,6 +9,8 @@ import AdminDashboard from "./pages/admin/AdminDashboard";
 import UserDashboard from "./pages/user/UserDashboard";
 import ClaimsManagement from "./pages/admin/ClaimsManagement";
 import DocumentUpload from "./pages/admin/DocumentUpload";
+import DSS from "./pages/admin/DSS";
+import Settings from "./pages/admin/Settings";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -30,8 +32,8 @@ const App = () => (
           <Route path="/admin/claims" element={<ClaimsManagement />} />
           <Route path="/admin/upload" element={<DocumentUpload />} />
           <Route path="/admin/map" element={<div className="p-8"><h1>GIS Map - Coming Soon</h1></div>} />
-          <Route path="/admin/dss" element={<div className="p-8"><h1>Decision Support System - Coming Soon</h1></div>} />
-          <Route path="/admin/settings" element={<div className="p-8"><h1>Settings - Coming Soon</h1></div>} />
+          <Route path="/admin/dss" element={<DSS />} />
+          <Route path="/admin/settings" element={<Settings />} />
           
           {/* User Routes */}
           <Route path="/user/dashboard" element={<UserDashboard />} />
