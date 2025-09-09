@@ -11,6 +11,9 @@ import ClaimsManagement from "./pages/admin/ClaimsManagement";
 import DocumentUpload from "./pages/admin/DocumentUpload";
 import DSS from "./pages/admin/DSS";
 import Settings from "./pages/admin/Settings";
+import ClaimsView from "./pages/user/ClaimsView";
+import MapView from "./pages/user/MapView";
+import DSSView from "./pages/user/DSSView";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -37,9 +40,9 @@ const App = () => (
           
           {/* User Routes */}
           <Route path="/user/dashboard" element={<UserDashboard />} />
-          <Route path="/user/claims" element={<div className="p-8"><h1>User Claims View - Coming Soon</h1></div>} />
-          <Route path="/user/map" element={<div className="p-8"><h1>User GIS Map - Coming Soon</h1></div>} />
-          <Route path="/user/dss" element={<div className="p-8"><h1>User DSS View - Coming Soon</h1></div>} />
+          <Route path="/user/claims" element={<ClaimsView />} />
+          <Route path="/user/map" element={<MapView />} />
+          <Route path="/user/dss" element={<DSSView />} />
           
           {/* Catch-all route */}
           <Route path="*" element={<NotFound />} />
