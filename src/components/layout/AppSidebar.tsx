@@ -38,6 +38,7 @@ const AppSidebar = ({ userType }: SidebarProps) => {
     { title: "Claims", url: "/user/claims", icon: FileText },
     { title: "GIS Map", url: "/user/map", icon: Map },
     { title: "DSS", url: "/user/dss", icon: Brain },
+    { title: "Settings", url: "/user/settings", icon: Settings },
   ];
 
   const items = userType === 'admin' ? adminItems : userItems;
