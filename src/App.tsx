@@ -14,6 +14,7 @@ import Settings from "./pages/admin/Settings";
 import ClaimsView from "./pages/user/ClaimsView";
 import MapView from "./pages/user/MapView";
 import DSSView from "./pages/user/DSSView";
+import UserSettings from "./pages/user/UserSettings";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -43,6 +44,7 @@ const App = () => (
           <Route path="/user/claims" element={<ClaimsView />} />
           <Route path="/user/map" element={<MapView />} />
           <Route path="/user/dss" element={<DSSView />} />
+          <Route path="/user/settings" element={<UserSettings />} />
           
           {/* Catch-all route */}
           <Route path="*" element={<NotFound />} />
